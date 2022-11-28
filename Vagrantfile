@@ -7,6 +7,6 @@ Vagrant.configure("2") do |config|
           vb.cpus = 2
       end
       config.vm.provision :shell, path: "./scripts/bootstrap.sh"
-      config.vm.network :forwarded_port, guest: 8080, host:8080, id: "kubeflow"
-      config.vm.network :forwarded_port, guest: 8888, host:8888, id:"jupyter"
+      config.vm.network :forwarded_port, guest: 8887, host: 8887, host_ip:"127.0.0.1"
+      config.vm.network :forwarded_port, guest: 8888, host: 8888, host_ip:"127.0.0.1"
 end

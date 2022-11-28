@@ -1,3 +1,4 @@
+sed -ie 's/127.0.0.1/0.0.0.0/g' /etc/hosts
 apt-get -y install \
       ca-certificates \
       curl \
@@ -49,4 +50,7 @@ virtualenv kubeflow
 source kubeflow/bin/activate
 
 jupyter notebook &
+kubectl wait --timeout=600s --for=condition=ready pod -n kubeflow --all
+kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8887:80
+
 EOF

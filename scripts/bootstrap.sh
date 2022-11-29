@@ -51,6 +51,6 @@ source kubeflow/bin/activate
 
 jupyter notebook &
 kubectl wait --timeout=600s --for=condition=ready pod -n kubeflow --all
-kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8887:80
+kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80 --address 0.0.0.0 &
 
 EOF
